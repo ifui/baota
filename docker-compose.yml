@@ -1,0 +1,11 @@
+version: "3"
+services: 
+    app:
+        build: .
+        stdin_open: true
+        tty: true
+        ports: 
+            - "8888:8888"
+        volumes: 
+            - "./wwwroot:/www/wwwroot"
+        privileged: true
