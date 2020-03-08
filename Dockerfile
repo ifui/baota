@@ -1,7 +1,19 @@
-FROM baota:7.1
+ARG CENTOS_VERSION
+FROM centos:${CENTOS_VERSION}
+LABEL maintainer="ifui <ifui@foxmail.com>"
 
-VOLUME [ "/www" ]
+ARG BAOTA_INSTALL_PATH
+# install pkg
+RUN yum install -y wget \
+    && yum install -y ca-certificates
 
-COPY "www" "./www"
+# install baota
+RUN set -e \
+    && wget -O install.sh ${BAOTA_INSTALL_PATH} \
+    && echo y | sh install.sh
 
-EXPOSE 8888
+COPY ./DockerScript /www/DockerScript
+
+CMD [ "/www/DockerScript/init.sh" ]
+
+EXPOSE 8888 80 443 20 21 22
