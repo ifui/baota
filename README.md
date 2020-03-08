@@ -12,6 +12,8 @@
 
 ## 如何使用
 
+> 注意，所有命令你应该在项目根目录下完成
+
 1. 克隆目录到本地
 ```bash
 git clone https://github.com/ifui/baota.git
@@ -33,3 +35,20 @@ docker-compose logs app
 ```
 
 5. 打开浏览器，输入地址，开始享受
+
+## 删除容器和数据卷
+
+### 删除容器
+```bash
+docker-compose down
+```
+### 删除数据卷，请确认你需要执行此操作！
+```bash
+docker volume rm baota_app
+```
+
+## 关于作者
+### ifui
+邮箱：ifui@foxmail.com \
+个人主页：[https://github.com/ifui](https://github.com/ifui) \
+提交问题：[https://github.com/ifui/baota/issues](https://github.com/ifui/baota/issues)
