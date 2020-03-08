@@ -1,5 +1,5 @@
 .env
 .DS_Store
-.backup
-.wwwlogs
-.wwwroot
+/backup
+/wwwlogs
+/wwwroot

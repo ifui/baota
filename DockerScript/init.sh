@@ -1,7 +1,8 @@
 #!/bin/bash
-set -ex
 
-bash /etc/init.d/bt start
-bash /etc/init.d/bt default
+
+
+bash /www/server/panel/init.sh start
+bash /www/server/panel/init.sh default
 
 /bin/bash
