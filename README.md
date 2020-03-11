@@ -49,9 +49,6 @@ docker-compose down
 docker volume rm baota_app
 ```
 
-## 配置详解
-
-
 ## 关于作者
 ### ifui
 邮箱：ifui@foxmail.com \

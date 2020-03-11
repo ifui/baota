@@ -18,20 +18,14 @@ services:
             - ${SSH_PORT}:22
             - ${MYSQL_PORT}:3306
         volumes: 
-            - www:/www
-            - etc:/etc/init.d
-            - bin:/usr/bin
+            - app:/www
             - ${WEB_PATH}:/www/wwwroot
             - ${BACKUP_PATH}:/www/backup
             - ${LOGS_PATH}:/www/wwwlogs
             - ${DOCKERSCRIPT_PATH}:/www/DockerScript
 
 volumes: 
-    www:
-        driver: ${VOLUMES_DRIVER}
-    etc:
-        driver: ${VOLUMES_DRIVER}
-    bin:
+    app:
         driver: ${VOLUMES_DRIVER}
 
 networks: 

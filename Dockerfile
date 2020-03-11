@@ -11,13 +11,16 @@ RUN yum install -y wget \
     && yum install -y gd
 
 # install baota
-RUN set -e \
+RUN set -eux \
     && wget -O install.sh ${BAOTA_INSTALL_PATH} \
     && echo y | sh install.sh
 
-VOLUME [ "/data" ]
-
 COPY ./DockerScript /www/DockerScript
+
+RUN set -eux \
+    && mkdir /www/data \
+    && cp -rf -p /usr/bin /www/data/bin \
+    && cp -rf -p /etc/rc.d/init.d /www/data/init.d
 
 CMD [ "/www/DockerScript/init.sh" ]
 
