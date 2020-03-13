@@ -1,8 +1,8 @@
-version: "3.7"
+version: "3"
 services: 
     app:
         build: 
-            context: ./
+            context: ./app/
             args: 
                 - CENTOS_VERSION=${CENTOS_VERSION}
                 - BAOTA_INSTALL_PATH=${BAOTA_INSTALL_PATH}
@@ -17,16 +17,31 @@ services:
             - ${FTP_PORT}:21
             - ${SSH_PORT}:22
             - ${MYSQL_PORT}:3306
+            - ${PHPMYADMIN_PORT}:888
         volumes: 
-            - app:/www
+            - www:/www
+            - usr:/usr
+            - etc:/etc
             - ${WEB_PATH}:/www/wwwroot
             - ${BACKUP_PATH}:/www/backup
             - ${LOGS_PATH}:/www/wwwlogs
-            - ${DOCKERSCRIPT_PATH}:/www/DockerScript
-
+    app_backup:
+        build: 
+            context: ./app_backup/
+        depends_on: 
+            - app
+        stdin_open: true
+        tty: true
+        privileged: true
+        volumes: 
+            - ./app_backup:/backup
+            - www:/_data/www
+            - usr:/_data/usr
+            - etc:/_data/etc
 volumes: 
-    app:
-        driver: ${VOLUMES_DRIVER}
+    www:
+    usr:
+    etc:
 
 networks: 
     default:
