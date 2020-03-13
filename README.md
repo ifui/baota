@@ -46,7 +46,7 @@ docker-compose down
 ```
 ### 删除数据卷，请确认你需要执行此操作！
 ```bash
-docker volume rm baota_app
+docker volume rm baota_www && docker volume rm baota_usr && docker volume rm baota_etc
 ```
 
 ## 关于作者

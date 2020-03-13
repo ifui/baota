@@ -15,13 +15,8 @@ RUN set -eux \
     && wget -O install.sh ${BAOTA_INSTALL_PATH} \
     && echo y | sh install.sh
 
-COPY ./DockerScript /www/DockerScript
+COPY app.sh /
 
-RUN set -eux \
-    && mkdir /www/data \
-    && cp -rf -p /usr/bin /www/data/bin \
-    && cp -rf -p /etc/rc.d/init.d /www/data/init.d
+RUN chmod 777 /app.sh
 
-CMD [ "/www/DockerScript/init.sh" ]
-
-EXPOSE 8888 80 443 20 21 22 3306
+CMD [ "/app.sh" ]
