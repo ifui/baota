@@ -19,15 +19,10 @@ services:
             - ${MYSQL_PORT}:3306
             - ${PHPMYADMIN_PORT}:888
         volumes: 
-            - app:/www
             - ${WEB_PATH}:/www/wwwroot
             - ${BACKUP_PATH}:/www/backup
             - ${LOGS_PATH}:/www/wwwlogs
             - ${DOCKERSCRIPT_PATH}:/www/DockerScript
-
-volumes: 
-    app:
-        driver: ${VOLUMES_DRIVER}
 
 networks: 
     default:

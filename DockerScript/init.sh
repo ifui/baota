@@ -3,9 +3,6 @@ PATH=/www/data/usr/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/s
 export PATH
 Main()
 {
-    Move_Ln_File /usr/bin
-    Move_Ln_File /etc/rc.d/init.d
-    Move_Ln_File /usr/local
     Init
 
     /etc/init.d/bt default
@@ -29,4 +26,4 @@ Init()
 }
 
 Main
-/bin/bash
+bash

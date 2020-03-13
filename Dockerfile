@@ -17,13 +17,6 @@ RUN set -eux \
 
 COPY ./DockerScript /www/DockerScript
 
-RUN set -eux \
-    && mkdir -p /www/data/usr \
-    && cp -rf -p /usr/bin /www/data/usr/bin \
-    && cp -rf -p /usr/local /www/data/usr/local \
-    \
-    && mkdir -p /www/data/etc/rc.d \
-    && cp -rf -p /etc/rc.d/init.d /www/data/etc/rc.d/init.d
 
 CMD [ "/www/DockerScript/init.sh" ]
 
