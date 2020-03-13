@@ -17,6 +17,7 @@ services:
             - ${FTP_PORT}:21
             - ${SSH_PORT}:22
             - ${MYSQL_PORT}:3306
+            - ${PHPMYADMIN_PORT}:888
         volumes: 
             - app:/www
             - ${WEB_PATH}:/www/wwwroot

@@ -1,25 +1,20 @@
 #!/bin/bash
-set -eux
-
+PATH=/www/data/usr/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
 Main()
 {
-    Remove_File
-    Ln_File
+    Move_Ln_File /usr/bin
+    Move_Ln_File /etc/rc.d/init.d
+    Move_Ln_File /usr/local
     Init
 
     /etc/init.d/bt default
 }
 
-Remove_File()
+Move_Ln_File()
 {
-    /www/data/bin/mv /usr/bin /usr/bin_backup
-    /www/data/bin/mv /etc/rc.d/init.d /etc/rc.d/init.d_backup
-}
-
-Ln_File()
-{
-    /www/data/bin/ln -s /www/data/bin /usr
-    /www/data/bin/ln -s /www/data/init.d /etc/rc.d
+    mv $1 $1_backup
+    ln -s /www/data$1 $1
 }
 
 Init()
