@@ -28,7 +28,7 @@ cp .env-example .env
 
 3. 运行容器
 ```bash
-docker-compose up -d
+docker-compose up -d app
 ```
 
 4. 查看宝塔面板默认用户名、密码
@@ -48,6 +48,42 @@ docker-compose down
 ```bash
 docker volume rm baota_www && docker volume rm baota_usr && docker volume rm baota_etc
 ```
+
+## 宝塔面板的镜像数据备份迁移操作
+
+### 启动备份数据容器
+
+```bash
+docker-compose up -d app_backup
+```
+
+### 进入备份数据容器
+```bash
+docker-compose exec app_backup sh
+```
+
+### 进入执行目录
+```bash
+cd /app_backup
+```
+
+目录文件说明：
+- export.sh 备份脚本
+- import.sh 数据迁移脚本
+
+#### 执行备份脚本
+```bash
+sh export.sh
+```
+执行成功后，将在 宿主机项目目录下的 `app_backup/export` 文件夹中生成 `baota_backup_*.tar.gz` 的数据包
+
+#### 执行数据迁移脚本
+```bash
+sh import.sh
+```
+可选择指定数据包迁移数据
+
+执行成功后，将会覆盖原volume数据，请慎重执行此操作，建议提前备份
 
 ## 关于作者
 ### ifui
