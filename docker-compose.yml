@@ -25,23 +25,13 @@ services:
             - ${WEB_PATH}:/www/wwwroot
             - ${BACKUP_PATH}:/www/backup
             - ${LOGS_PATH}:/www/wwwlogs
-    app_backup:
-        build: 
-            context: ./app_backup/
-        depends_on: 
-            - app
-        stdin_open: true
-        tty: true
-        privileged: true
-        volumes: 
-            - ./app_backup:/backup
-            - www:/_data/www
-            - usr:/_data/usr
-            - etc:/_data/etc
 volumes: 
     www:
+        driver: ${VOLUMES_DRIVER}
     usr:
+        driver: ${VOLUMES_DRIVER}
     etc:
+        driver: ${VOLUMES_DRIVER}
 
 networks: 
     default:
