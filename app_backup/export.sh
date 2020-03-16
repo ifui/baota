@@ -1,3 +1,4 @@
+#!/bin/sh
 # 宝塔面板数据备份
 set -e
 DATE=`date +%Y%m%d%H%M%S`

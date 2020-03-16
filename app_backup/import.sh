@@ -1,8 +1,10 @@
+#!/bin/sh
 # 宝塔面板数据导入脚本
 set -e
 EXPORT_PATH='/app_backup/export'
 IMPORT_PATH='/app_backup'
 cd $EXPORT_PATH
+
 Menu()
 {
 cat << EOF
@@ -27,14 +29,14 @@ Menu_List()
 
 Menu_Case()
 {
-    if echo $1 | grep -q '[^0-9]';
+    if [[echo $1 | grep -q '[^0-9]']] || [[ $1 != 0 ]];
     then
         echo -e "\e[31m请输入正确的数字选项！\e[0m"
         exit 1
     fi
     file="$(($1+1))p"
     FILENAME=`ls -l $EXPORT_PATH | sed -n $file | awk '{print $9}'`
-    if [ ! -f $EXPORT_PATH/$FILENAME ];
+    if [ ! -f $FILENAME ];
     then
         echo -e "\e[31m文件不存在！\e[0m"
         exit 1

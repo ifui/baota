@@ -39,13 +39,12 @@ services:
             - usr:/app_backup/data/usr
             - etc:/app_backup/data/etc
 volumes: 
-    volumes: 
-        www:
-            driver: ${VOLUMES_DRIVER}
-        usr:
-            driver: ${VOLUMES_DRIVER}
-        etc:
-            driver: ${VOLUMES_DRIVER}
+    www:
+        driver: ${VOLUMES_DRIVER}
+    usr:
+        driver: ${VOLUMES_DRIVER}
+    etc:
+        driver: ${VOLUMES_DRIVER}
 
 networks: 
     default:
