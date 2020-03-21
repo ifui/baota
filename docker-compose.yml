@@ -9,6 +9,7 @@ services:
         stdin_open: true
         tty: true
         privileged: true
+        restart: always
         ports: 
             - ${BAOTA_PORT}:8888
             - ${WEB_PORT}:80
