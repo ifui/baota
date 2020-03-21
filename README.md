@@ -14,11 +14,11 @@
 
 > 建议使用 Liunx 或者 MAC 部署，windows用户想来是用不到这个
 
-### 1. 安装git，或者直接下载`ZIP`
+### 1. 安装git，或者直接下载`zip`也可以
 `sudo yum install -y git`
 
 ### 2. 到你想生成项目的文件夹下执行命令
-`git clone http://gitlab.qjw.hj/ifui/baota.git`
+`git clone https://github.com/ifui/baota.git`
 
 ### 3. 进入项目根目录
 `cd baota`
