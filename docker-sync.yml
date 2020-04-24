@@ -1,0 +1,8 @@
+version: '2'
+
+syncs:
+	sync_wwwroot:
+		src: './'
+		sync_strategy: 'unison'
+		sync_userid: '1000'
+		sync_excludes: []

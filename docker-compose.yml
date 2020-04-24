@@ -19,11 +19,12 @@ services:
             - ${SSH_PORT}:22
             - ${MYSQL_PORT}:3306
             - ${PHPMYADMIN_PORT}:888
+            - ${REDIS_PORT}:6379
         volumes: 
             - www:/www
             - usr:/usr
             - etc:/etc
-            - ${WEB_PATH}:/www/wwwroot
+            - ${WEB_PATH}:/www/wwwroot:cached
             - ${BACKUP_PATH}:/www/backup
             - ${LOGS_PATH}:/www/wwwlogs
     app_backup:
