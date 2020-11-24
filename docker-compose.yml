@@ -1,53 +1,56 @@
-version: "3"
-services: 
-    app:
-        build: 
-            context: ./app/
-            args: 
-                - CENTOS_VERSION=${CENTOS_VERSION}
-                - BAOTA_INSTALL_PATH=${BAOTA_INSTALL_PATH}
-        stdin_open: true
-        tty: true
-        privileged: true
-        restart: always
-        ports: 
-            - ${BAOTA_PORT}:8888
-            - ${WEB_PORT}:80
-            - ${HTTPS_PORT}:443
-            - ${FTP_DATA_PORT}:20
-            - ${FTP_PORT}:21
-            - ${SSH_PORT}:22
-            - ${MYSQL_PORT}:3306
-            - ${PHPMYADMIN_PORT}:888
-            - ${REDIS_PORT}:6379
-        volumes: 
-            - www:/www
-            - usr:/usr
-            - etc:/etc
-            - ${WEB_PATH}:/www/wwwroot:cached
-            - ${BACKUP_PATH}:/www/backup
-            - ${LOGS_PATH}:/www/wwwlogs
-    app_backup:
-        build: 
-            context: ./app_backup/
-        depends_on: 
-            - app
-        stdin_open: true
-        tty: true
-        privileged: true
-        volumes: 
-            - ./app_backup/export:/app_backup/export
-            - www:/app_backup/data/www
-            - usr:/app_backup/data/usr
-            - etc:/app_backup/data/etc
-volumes: 
-    www:
-        driver: ${VOLUMES_DRIVER}
-    usr:
-        driver: ${VOLUMES_DRIVER}
-    etc:
-        driver: ${VOLUMES_DRIVER}
+version: '3'
+services:
+  app:
+    build:
+      context: ./app/
+      args:
+        - CENTOS_VERSION=${CENTOS_VERSION}
+        - BAOTA_INSTALL_PATH=${BAOTA_INSTALL_PATH}
+    stdin_open: true
+    tty: true
+    privileged: true
+    restart: always
+    ports:
+      - ${BAOTA_PORT}:8888
+      - ${WEB_PORT}:80
+      - ${HTTPS_PORT}:443
+      - ${FTP_DATA_PORT}:20
+      - ${FTP_PORT}:21
+      - ${SSH_PORT}:22
+      - ${MYSQL_PORT}:3306
+      - ${PHPMYADMIN_PORT}:888
+      - ${REDIS_PORT}:6379
+      - ${MEMCACHED_PORT}:11211
+    volumes:
+      - www:/www
+      - usr:/usr
+      - etc:/etc
+      - ${WEB_PATH}:/www/wwwroot:cached
+      - ${BACKUP_PATH}:/www/backup
+      - ${LOGS_PATH}:/www/wwwlogs
+      - ${DATA_PATH}:/www/server/data:cached
+      - ${CRON_PATH}:/www/server/cron
+  app_backup:
+    build:
+      context: ./app_backup/
+    depends_on:
+      - app
+    stdin_open: true
+    tty: true
+    privileged: true
+    volumes:
+      - ./app_backup/export:/app_backup/export
+      - www:/app_backup/data/www
+      - usr:/app_backup/data/usr
+      - etc:/app_backup/data/etc
+volumes:
+  www:
+    driver: ${VOLUMES_DRIVER}
+  usr:
+    driver: ${VOLUMES_DRIVER}
+  etc:
+    driver: ${VOLUMES_DRIVER}
 
-networks: 
-    default:
-        driver: ${NETWORKS_DRIVER}
+networks:
+  default:
+    driver: ${NETWORKS_DRIVER}
