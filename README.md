@@ -122,6 +122,10 @@ LOGS_PATH=./wwwlogs
 BACKUP_PATH=./backup
 # 启动脚本路径
 DOCKERSCRIPT_PATH=./DockerScript
+# 数据库相关存储路径
+DATA_path=./data
+# 计划任务
+CRON_PATH=./cron
 ```
 
 ### 常用命令
