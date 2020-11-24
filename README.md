@@ -79,6 +79,8 @@ docekr-compose exec app_backup sh
 - backup .env 可配置，默认为宝塔备份目录
 - wwwlogs .env 可配置，默认为宝塔日志目录
 - wwwroot .env 可配置，默认为宝塔网站目录，请把你的网站放在此目录下
+- data .env 可配置，默认为宝塔数据存储目录
+- cron .env 可配置，默认为宝塔计划任务放置目录
 
 ### .env 配置说明
 
