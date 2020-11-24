@@ -4,3 +4,5 @@
 /wwwlogs
 /wwwroot
 /app_backup/export
+/cron
+/data
