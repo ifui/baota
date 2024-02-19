@@ -6,7 +6,8 @@ RUN groupadd -f www && useradd -g www www
 
 ARG BAOTA_INSTALL_PATH
 # install pkg
-RUN yum install -y wget \
+RUN echo 'bt' > /etc/hostname \
+    && yum install -y wget \
     && yum install -y ca-certificates \
     && yum install -y gd
 
